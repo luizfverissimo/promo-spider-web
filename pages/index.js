@@ -29,7 +29,7 @@ export default function Home({ offersData }) {
                 Todas as ofertas
               </h2>
             </div>
-            <a href="https://t.me/macofertas" rel="noopener noreferrer" className='flex justify-center items-center bg-theme-gray text-theme-white px-4 py-3 rounded-xl whitespace-nowrap font-epilogue font-bold text-theme-white cursor-pointer transition-all hover:brightness-110 gap-2'>
+            <a href="https://t.me/macofertas" target="_blank" re-="noopener noreferrer" className='flex justify-center items-center bg-theme-gray text-theme-white px-4 py-3 rounded-xl whitespace-nowrap font-epilogue font-bold text-theme-white cursor-pointer transition-all hover:brightness-110 gap-2'>
               Entrar para o grupo do Telegram <FaTelegramPlane />
             </a>
           </div>
@@ -57,6 +57,7 @@ export const getServerSideProps = async (context) => {
     });
   });
   
+  console.log(offersData)
   return {
     props: { offersData }
   };

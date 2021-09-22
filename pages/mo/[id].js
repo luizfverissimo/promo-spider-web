@@ -11,7 +11,7 @@ function OfferPage({ offerData }) {
   return (
     <div className='w-screen min-h-screen bg-theme-white flex flex-col items-center'>
       <Head>
-        <title>Promo Spider - {offerData.title}</title>
+        <title>Promo Spider - {offerData.title || Oferta}</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
@@ -52,6 +52,7 @@ export async function getServerSideProps({ params }) {
     offerData = snapshot.val();
   });
 
+  console.log(offerData)
   return {
     props: { offerData }
   };
