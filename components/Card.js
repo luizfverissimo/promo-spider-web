@@ -9,7 +9,7 @@ dayjs.extend(relativeTime);
 dayjs.extend(customParseFormat);
 
 function createDateFromNow(date) {
-  const dateFormat = dayjs(date, 'HH:mm - DD/MM/YYYY').subtract(3, 'hours');
+  const dateFormat = dayjs(date, 'HH:mm - DD/MM/YYYY');
   const dateFromNow = dayjs().to(dateFormat);
 
   return dateFromNow;
