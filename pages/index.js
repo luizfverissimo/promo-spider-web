@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { getDatabase, ref, onValue, query, limitToLast } from 'firebase/database';
 import { FaTelegramPlane } from 'react-icons/fa';
+import admin from '../services/firebaseNode'
 
 import { app } from '../services/firebase';
 
@@ -45,19 +46,29 @@ export default function Home({ offersData }) {
   );
 }
 
-export const getServerSideProps = async (context) => {
-  const db = getDatabase(app);
+export const getServerSideProps = async () => {
+  const db = admin.database()
   let offersData = [];
 
-  const offersRef = query(ref(db, 'offers/'), limitToLast(20));
-  onValue(offersRef, (snapshot) => {
-    snapshot.forEach((item) => {
+  const ref = db.ref('offers')
+  ref.on('value', snapshot => {
+      snapshot.forEach((item) => {
       const data = item.val();
       offersData.push(data);
     });
-  });
+  })
+
+  // const db = getDatabase(app);
+  // let offersData = [];
+
+  // const offersRef = query(ref(db, 'offers/'), limitToLast(20));
+  // onValue(offersRef, (snapshot) => {
+  //   snapshot.forEach((item) => {
+  //     const data = item.val();
+  //     offersData.push(data);
+  //   });
+  // });
   
-  console.log(offersData)
   return {
     props: { offersData }
   };

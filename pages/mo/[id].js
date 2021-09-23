@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { getDatabase, ref, onValue } from 'firebase/database';
+import admin from '../../services/firebaseNode';
 
 import { app } from '../../services/firebase';
 import Header from '../../components/Header';
@@ -9,12 +10,13 @@ import { BiArrowBack } from 'react-icons/bi';
 
 function OfferPage({ offerData }) {
   return (
+    
     <div className='w-screen min-h-screen bg-theme-white flex flex-col items-center'>
       <Head>
         <title>Promo Spider - {offerData.title || Oferta}</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-
+      {offerData && (
       <main className='w-full max-w-screen-xl flex flex-col items-center px-6 xl:px-0'>
         <Header />
 
@@ -37,6 +39,9 @@ function OfferPage({ offerData }) {
           </div>
         </section>
       </main>
+
+      )}
+
     </div>
   );
 }
@@ -44,15 +49,23 @@ function OfferPage({ offerData }) {
 export default OfferPage;
 
 export async function getServerSideProps({ params }) {
-  const db = getDatabase(app);
+  const db = admin.database()
   let offerData;
 
-  const offersRef = ref(db, 'offers/' + params.id);
-  onValue(offersRef, (snapshot) => {
-    offerData = snapshot.val();
-  });
+  const ref = db.ref('offers/' + params.id)
+  ref.on('value', snapshot => {
+    offerData = snapshot.val()
+  })
 
-  console.log(offerData)
+  // const db = getDatabase(app);
+  // let offerData;
+
+  // const offersRef = ref(db, 'offers/' + params.id);
+  // onValue(offersRef, (snapshot) => {
+  //   offerData = snapshot.val();
+  // });
+
+  // console.log(offerData)
   return {
     props: { offerData }
   };

@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp,  } from 'firebase/app';
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -10,4 +10,4 @@ const firebaseConfig = {
   appId: process.env.FIREBASE_APP_ID
 };
 
-export const app = initializeApp(firebaseConfig);
+// export const app = initializeApp(firebaseConfig);
