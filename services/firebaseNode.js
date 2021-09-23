@@ -1,13 +1,12 @@
 import admin from 'firebase-admin';
 
+const serviceAccount = JSON.parse(
+  process.env.FIREBASE_SERVICE_ACCOUNT_KEY
+);
+
 if(!admin.apps.length) {
   admin.initializeApp({
-    credential: admin.credential.cert({
-      "project_id": process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID_ADMIN,
-      "client_email": process.env.FIREBASE_CLIENT_EMAIL,
-      "private_key": process.env.FIREBASE_PRIVATE_KEY.replace(/\n/g, '\n'),
-      "private_key_id": process.env.FIREBASE_PRIVATE_KEY_ID,
-    }),
+    credential: admin.credential.cert(serviceAccount),
     databaseURL: process.env.FIREBASE_DATABASE_URL
   });
 }
