@@ -51,7 +51,7 @@ export const getServerSideProps = async () => {
   const db = admin.firestore();
   let offersData = [];
 
-  const snapshot = await db.collection('offers').get();
+  const snapshot = await db.collection('offers').limit(20).get();
   snapshot.forEach((item) => {
     const data = item.data();
     offersData.push(data);
