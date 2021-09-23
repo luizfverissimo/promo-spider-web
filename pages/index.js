@@ -17,7 +17,7 @@ export default function Home({ offersData }) {
         <Header />
 
         <section className='w-full flex flex-col items-center'>
-          <div className='w-full flex justify-between items-center mt-16 flex-col  md:flex-row'>
+          <div className='w-full flex justify-between items-center mt-9 flex-col  md:flex-row'>
             <div className='w-full flex flex-col items-center mb-4 md:mb-0 md:items-start'>
               <p className='font-archivo font-normal text-lg text-theme-gray'>
                 MacOfertas
