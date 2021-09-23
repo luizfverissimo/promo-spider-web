@@ -1,9 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { getDatabase, ref, onValue } from 'firebase/database';
 import admin from '../../services/firebaseNode';
 
-import { app } from '../../services/firebase';
 import Header from '../../components/Header';
 import Card from '../../components/Card';
 import { BiArrowBack } from 'react-icons/bi';

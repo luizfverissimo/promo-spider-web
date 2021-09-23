@@ -1,10 +1,6 @@
 import Head from 'next/head';
-import Image from 'next/image';
-import { getDatabase, ref, onValue, query, limitToLast } from 'firebase/database';
 import { FaTelegramPlane } from 'react-icons/fa';
 import admin from '../services/firebaseNode'
-
-import { app } from '../services/firebase';
 
 import Card from '../components/Card';
 import Header from '../components/Header';
