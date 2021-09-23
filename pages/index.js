@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { FaTelegramPlane } from 'react-icons/fa';
-import admin from '../services/firebaseNode'
+import admin from '../services/firebaseNode';
 
 import Card from '../components/Card';
 import Header from '../components/Header';
@@ -14,7 +14,7 @@ export default function Home({ offersData }) {
       </Head>
 
       <main className='w-full max-w-screen-xl flex flex-col items-center px-6 xl:px-0'>
-      <Header/>
+        <Header />
 
         <section className='w-full flex flex-col items-center'>
           <div className='w-full flex justify-between items-center mt-16 flex-col  md:flex-row'>
@@ -26,7 +26,12 @@ export default function Home({ offersData }) {
                 Todas as ofertas
               </h2>
             </div>
-            <a href="https://t.me/macofertas" target="_blank" re-="noopener noreferrer" className='flex justify-center items-center bg-theme-gray text-theme-white px-4 py-3 rounded-xl whitespace-nowrap font-epilogue font-bold text-theme-white cursor-pointer transition-all hover:brightness-110 gap-2'>
+            <a
+              href='https://t.me/macofertas'
+              target='_blank'
+              re-='noopener noreferrer'
+              className='flex justify-center items-center bg-theme-gray text-theme-white px-4 py-3 rounded-xl whitespace-nowrap font-epilogue font-bold text-theme-white cursor-pointer transition-all hover:brightness-110 gap-2'
+            >
               Entrar para o grupo do Telegram <FaTelegramPlane />
             </a>
           </div>
@@ -43,28 +48,15 @@ export default function Home({ offersData }) {
 }
 
 export const getServerSideProps = async () => {
-  const db = admin.database()
+  const db = admin.firestore();
   let offersData = [];
 
-  const ref = db.ref('offers')
-  ref.on('value', snapshot => {
-      snapshot.forEach((item) => {
-      const data = item.val();
-      offersData.push(data);
-    });
-  })
+  const snapshot = await db.collection('offers').get();
+  snapshot.forEach((item) => {
+    const data = item.data();
+    offersData.push(data);
+  });
 
-  // const db = getDatabase(app);
-  // let offersData = [];
-
-  // const offersRef = query(ref(db, 'offers/'), limitToLast(20));
-  // onValue(offersRef, (snapshot) => {
-  //   snapshot.forEach((item) => {
-  //     const data = item.val();
-  //     offersData.push(data);
-  //   });
-  // });
-  
   return {
     props: { offersData }
   };
