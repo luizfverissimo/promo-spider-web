@@ -14,9 +14,10 @@ async function getOffers(req, res) {
     cache: 'default'
   };
 
-  const response = await fetch('https://the-spider-promo.glitch.me', myInit);
+  fetch('https://the-spider-promo.glitch.me', myInit);
+
   res.statusCode = 200;
-  res.json({message: 'Ping enviado!', response})
+  res.json({message: 'Ping enviado!'})
 }
 
 export default getOffers;
