@@ -13,11 +13,16 @@ async function getOffers(req, res) {
     mode: 'cors',
     cache: 'default'
   };
+  
+  setTimeout(() => {
+    res.statusCode = 200;
+    res.json({message: 'Ping enviado!'})
+  }, 1000)  
 
   await fetch('https://the-spider-promo.glitch.me', myInit);
 
-  res.statusCode = 200;
-  res.json({message: 'Ping enviado!'})
+//   res.statusCode = 200;
+//   res.json({message: 'Ping enviado!'})
 }
 
 export default getOffers;
