@@ -21,7 +21,7 @@ function OfferPage({ offerData }) {
           <div className='w-full flex justify-between items-center mt-9 flex-col  md:flex-row'>
             <div className='w-full flex flex-col items-center mb-4 md:mb-0 md:items-start'>
               <p className='font-archivo font-normal text-lg text-theme-gray'>
-                MacOfertas
+                🔧 Ferramenta Barata
               </p>
               <Link href='/'>
                 <a className='flex justify-center items-center bg-theme-gray text-theme-white px-4 py-3 rounded-xl whitespace-nowrap font-epilogue font-bold text-theme-white cursor-pointer transition-all hover:brightness-110 gap-2'>
@@ -45,7 +45,7 @@ export default OfferPage;
 export async function getServerSideProps({ params }) {
   const db = admin.firestore();
 
-  const snapshot = await db.collection('macoffer').doc(params.id).get();
+  const snapshot = await db.collection('promotools').doc(params.id).get();
   const offerData = snapshot.data();
   return {
     props: { offerData }

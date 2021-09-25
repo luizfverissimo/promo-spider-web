@@ -5,7 +5,7 @@ import admin from '../services/firebaseNode';
 import Card from '../components/Card';
 import Header from '../components/Header';
 
-export default function Home({ offersData }) {
+export default function Home({ macOffersData, promoToolsData }) {
   return (
     <div className='w-screen min-h-screen bg-theme-white flex flex-col items-center'>
       <Head>
@@ -37,7 +37,34 @@ export default function Home({ offersData }) {
           </div>
 
           <div className='w-full flex flex-wrap justify-around mt-11 gap-6'>
-            {offersData.map((offer) => (
+            {macOffersData.map((offer) => (
+              <Card key={offer.id} data={offer} />
+            ))}
+          </div>
+        </section>
+
+        <section className='w-full flex flex-col items-center'>
+          <div className='w-full flex justify-between items-center mt-9 flex-col  md:flex-row'>
+            <div className='w-full flex flex-col items-center mb-4 md:mb-0 md:items-start'>
+              <p className='font-archivo font-normal text-lg text-theme-gray'>
+                Ferramenta Barata
+              </p>
+              <h2 className='font-epilogue font-bold text-2xl text-theme-black'>
+                Todas as ofertas
+              </h2>
+            </div>
+            <a
+              href='https://t.me/macofertas'
+              target='_blank'
+              re-='noopener noreferrer'
+              className='flex justify-center items-center bg-theme-gray text-theme-white px-4 py-3 rounded-xl whitespace-nowrap font-epilogue font-bold text-theme-white cursor-pointer transition-all hover:brightness-110 gap-2'
+            >
+              Entrar para o grupo do Telegram <FaTelegramPlane />
+            </a>
+          </div>
+
+          <div className='w-full flex flex-wrap justify-around mt-11 gap-6'>
+            {promoToolsData.map((offer) => (
               <Card key={offer.id} data={offer} />
             ))}
           </div>
@@ -49,15 +76,22 @@ export default function Home({ offersData }) {
 
 export const getServerSideProps = async () => {
   const db = admin.firestore();
-  let offersData = [];
+  let macOffersData = [];
+  let promoToolsData = [];
 
-  const snapshot = await db.collection('offers').limit(20).get();
-  snapshot.forEach((item) => {
+  const snapshotMacOffers = await db.collection('macoffers').limit(20).get();
+  snapshotMacOffers.forEach((item) => {
     const data = item.data();
-    offersData.push(data);
+    macOffersData.push(data);
+  });
+
+  const snapshotPromoTools = await db.collection('macoffers').limit(20).get();
+  snapshotPromoTools.forEach((item) => {
+    const data = item.data();
+    promoToolsData.push(data);
   });
 
   return {
-    props: { offersData }
+    props: { macOffersData, promoToolsData }
   };
 };
