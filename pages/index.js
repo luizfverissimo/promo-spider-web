@@ -79,13 +79,13 @@ export const getServerSideProps = async () => {
   let macOffersData = [];
   let promoToolsData = [];
 
-  const snapshotMacOffers = await db.collection('macoffers').limit(20).get();
+  const snapshotMacOffers = await db.collection('macoffer').limit(20).get();
   snapshotMacOffers.forEach((item) => {
     const data = item.data();
     macOffersData.push(data);
   });
 
-  const snapshotPromoTools = await db.collection('macoffers').limit(20).get();
+  const snapshotPromoTools = await db.collection('promotools').limit(20).get();
   snapshotPromoTools.forEach((item) => {
     const data = item.data();
     promoToolsData.push(data);
