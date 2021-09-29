@@ -17,7 +17,7 @@ export default function Home({ macOffersData, promoToolsData, gamerOffersData })
       <main className='w-full max-w-screen-xl flex flex-col items-center px-6 xl:px-0'>
         <Header />
 
-        <section className='w-full flex flex-col items-center'>
+        <section className='w-full mb-9 flex flex-col items-center'>
           <div className='w-full flex justify-between items-center mt-9 flex-col  md:flex-row'>
             <div className='w-full flex flex-col items-center mb-4 md:mb-0 md:items-start'>
               <p className='font-archivo font-normal text-lg text-theme-gray'>
@@ -44,7 +44,7 @@ export default function Home({ macOffersData, promoToolsData, gamerOffersData })
           </div>
         </section>
 
-        <section className='w-full flex flex-col items-center'>
+        <section className='w-full mb-9 flex flex-col items-center'>
           <div className='w-full flex justify-between items-center mt-9 flex-col  md:flex-row'>
             <div className='w-full flex flex-col items-center mb-4 md:mb-0 md:items-start'>
               <p className='font-archivo font-normal text-lg text-theme-gray'>
