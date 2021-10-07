@@ -8,30 +8,30 @@ import { BiArrowBack } from 'react-icons/bi';
 
 function OfferPage({ offerData }) {
   return (
-    <div className='w-screen min-h-screen bg-theme-white flex flex-col items-center'>
+    <div className='flex flex-col items-center w-screen min-h-screen bg-theme-white'>
       <Head>
         <title>Promo Spider - {offerData.title || Oferta}</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className='w-full max-w-screen-xl flex flex-col items-center px-6 xl:px-0'>
+      <main className='flex flex-col items-center w-full max-w-screen-xl px-6 xl:px-0'>
         <Header />
 
-        <section className='w-full flex flex-col items-center'>
-          <div className='w-full flex justify-between items-center mt-9 flex-col  md:flex-row'>
-            <div className='w-full flex flex-col items-center mb-4 md:mb-0 md:items-start'>
-              <p className='font-archivo font-normal text-lg text-theme-gray'>
+        <section className='flex flex-col items-center w-full'>
+          <div className='flex flex-col items-center justify-between w-full mt-9 md:flex-row'>
+            <div className='flex flex-col items-center w-full mb-4 md:mb-0 md:items-start'>
+              <p className='text-lg font-normal font-archivo text-theme-gray'>
                 📱 Smartphone Ofertas
               </p>
               <Link href='/'>
-                <a className='flex justify-center items-center bg-theme-gray text-theme-white px-4 py-3 rounded-xl whitespace-nowrap font-epilogue font-bold text-theme-white cursor-pointer transition-all hover:brightness-110 gap-2'>
+                <a className='flex items-center justify-center gap-2 px-4 py-3 font-bold transition-all cursor-pointer bg-theme-gray text-theme-white rounded-xl whitespace-nowrap font-epilogue hover:brightness-110' >
                   <BiArrowBack /> Voltar para todas as ofertas
                 </a>
               </Link>
             </div>
           </div>
 
-          <div className='w-full flex justify-around items-center mt-11'>
+          <div className='flex items-center justify-around w-full mt-11'>
             <Card key={offerData.id} data={offerData} />
           </div>
         </section>
