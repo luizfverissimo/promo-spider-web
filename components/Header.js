@@ -1,11 +1,11 @@
-import Logo from "./Logo";
+import Logo from './Logo';
 
 function Header() {
   return (
-    <div className='w-full py-4 flex justify-start items-center'>
+    <div className='flex items-center justify-start w-full py-4'>
       <a className='flex items-center justify-center gap-2 cursor-pointer'>
         <Logo />
-        <h1 className='font-epilogue font-bold text-2xl text-theme-black'>
+        <h1 className='text-2xl font-bold font-epilogue text-theme-black'>
           Promo Spider
         </h1>
       </a>
