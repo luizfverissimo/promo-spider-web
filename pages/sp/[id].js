@@ -45,7 +45,7 @@ export default OfferPage;
 export async function getServerSideProps({ params }) {
   const db = admin.firestore();
 
-  const snapshot = await db.collection('promotools').doc(params.id).get();
+  const snapshot = await db.collection('smartphoneoffers').doc(params.id).get();
   const offerData = snapshot.data();
   return {
     props: { offerData }
